@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Determine backend API URL (supports local dev on port 5500/5501 targeting server on port 5000)
         const apiOrigin = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
             ? 'http://localhost:5000'
-            : window.location.origin;
+            : 'https://portfolio-3oo4.onrender.com';
         const apiUrl = `${apiOrigin}/api/contact`;
 
         fetch(apiUrl, {
