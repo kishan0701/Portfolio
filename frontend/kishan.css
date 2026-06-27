@@ -1,0 +1,842 @@
+:root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --neon-blue: #00d9ff;
+            --neon-purple: #9d00ff;
+            --neon-pink: #ff006e;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+/* Background Particles( jo background me net jaisa move kr rha ) */ 
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+/* Custom Cursor ( jo cursor ke sath move ho rha hai animation uske look ke liye  ) */
+
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, rgba(0, 217, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s ease;
+        }
+
+/* Scrollbar (Right side ) */
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 10px;
+        }
+
+/* ----------   NAVIGATION LOCKED BAR ---------- */
+
+        .navbar {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 80px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         padding: 0 5%;
+         z-index: 1000;
+         backdrop-filter: blur(10px);
+         background: rgba(10, 10, 10, 0.8);
+         border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+/* Logo container */
+        .logo {
+         display: flex;
+         align-items: center;
+        }
+
+        .logo-img {
+         width: 65px;            
+         height: auto;            
+         object-fit: contain;
+         margin-right: 10px;
+        }
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;     
+  gap: 2rem;
+}
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            transition: var(--transition);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-link:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 5px rgba(0, 217, 255, 0.5);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+/*  HERO SECTION – COMPLETE ( CSS of heading section ) */
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 5%;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    z-index: 1;
+}
+
+.profile-img-container {
+    position: relative;
+    margin-bottom: 2rem;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+    margin: 0 auto 2rem;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.profile-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.profile-img-container:hover .profile-img-overlay {
+    opacity: 1;
+}
+
+.upload-icon {
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+}
+
+.hero-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/*  ANIMATED BUTTON – Explore my work button ka css  */
+
+.hero-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 2px solid var(--neon-blue);
+    border-radius: 50px;
+    color: var(--neon-blue);
+    font-size: 1rem;
+    text-decoration: none;
+/* kill mobile highlight rectangle ( smartphone me button click krne pe square na aane ke liye ) */
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    transition: color 0.35s;
+}
+
+/* inner gradient fill ( jo explore my button ke andar ka animation hai uska ) */
+
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.45s;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.hero-btn:hover,
+.hero-btn:active {
+    color: var(--bg-primary);
+}
+
+.hero-btn:hover::before,
+.hero-btn:active::before {
+    transform: scaleX(1);
+}
+
+/* Section Styles ( profile photo jaha pe lagaya hu ) */
+
+        section {
+            padding: 5rem 5%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            color: var(--neon-blue);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+/* PROJECTS SECTION – FINAL, DROP-IN CSS */
+         :root {
+         --bg-primary:   #0f172a;                /* page background */
+         --bg-secondary: rgba(0, 0, 0, 0.65);  /* glass card background */
+         --neon-blue:    #00d9ff;
+         --text-primary: #ffffff;
+         --text-secondary:#cbd5e1;
+         --transition:   all 0.3s ease;
+}
+
+/* Grid container */
+
+         .projects-grid {
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+         gap: 2rem;
+         margin-top: 2rem;
+}
+
+/* PROJECT CARD STYLE ( Sab card ek jaisa hai or baad me vhi add kar sku jisse mere projects ke hisaab se ) --- */
+
+    .project-card {
+         position: relative;
+         width: 100%;
+         max-width: 350px;          /* keeps all cards the same width */
+         margin: 0 auto;            /* center if fewer than full row */
+         background: var(--bg-secondary);
+         border: 1px solid rgba(255, 255, 255, 0.12);
+         border-radius: 16px;
+         overflow: hidden;
+         backdrop-filter: blur(12px);
+         -webkit-backdrop-filter: blur(12px);
+         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+         transition: var(--transition);
+}
+
+     .project-card:hover { 
+         transform: translateY(-10px);
+         box-shadow: 0 12px 40px rgba(0, 217, 255, 0.80);
+}  
+
+/* Image */
+     .project-img {
+         width: 100%;
+         height: 200px;
+         object-fit: cover;
+         display: block;
+}
+
+/* Text block */
+     .project-content {
+         padding: 1.5rem;
+         color: var(--text-primary);
+}
+
+     .project-title {
+         font-size: 1.3rem;
+         font-weight: 600;
+         color: var(--neon-blue);
+         margin: 0 0 0.5rem;
+}
+
+    .project-desc {
+         font-size: 0.9rem;
+         color: var(--text-secondary);
+         line-height: 1.5;
+         margin-bottom: 1rem;
+}
+
+/* Tech tags row */
+
+     .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+}
+
+.tech-tag,
+.tech-tag[href] {
+  background: rgba(0, 217, 255, 0.12);
+  color: var(--neon-blue);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.tech-tag:hover {
+  background: var(--neon-blue);
+  color: var(--bg-primary);
+}
+
+/* Link icons row */
+.project-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-link {
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  color: var(--neon-blue);
+  transform: scale(1.2);
+}
+
+/* CARD ANIMATION  – jo card me animation or pop krne me help kr rha hai  */
+
+.project-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  padding: 2rem;
+}
+
+.project-popup.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--neon-blue);
+  border-radius: 10px;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 0 40px rgba(0, 217, 255, 0.35);
+}
+
+.close-popup {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-popup:hover {
+  color: var(--neon-blue);
+  transform: rotate(90deg);
+}
+
+/* Skills Section */
+
+.skills-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 2rem;
+margin-top: 2rem;
+}
+
+.skill-category {
+background: var(--bg-secondary);
+border-radius: 10px;
+padding: 2rem;
+width: 300px;
+text-align: center;
+border: 1px solid rgba(0, 217, 255, 0.2);
+transition: var(--transition);
+}
+
+.skill-category:hover {
+transform: translateY(-5px);
+box-shadow: 0 0 15px rgba(0, 217, 255, 0.40);
+border-color: var(--neon-blue);
+}
+
+.skill-title {
+font-size: 1.3rem;
+margin-bottom: 1.5rem;
+color: var(--neon-blue);
+}
+
+.skill-list {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.8rem;
+}
+
+.skill-item {
+background: rgba(157, 0, 255, 0.1);
+color: var(--neon-purple);
+padding: 0.5rem 1rem;
+border-radius: 50px;
+font-size: 0.9rem;
+transition: var(--transition);
+}
+
+.skill-item:hover {
+background: rgba(157, 0, 255, 0.3);
+transform: scale(1.05);
+}
+
+/* RESUME SECTION  */
+
+.resume-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.resume-preview {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    border: 1px solid var(--neon-blue);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: var(--bg-secondary);
+    box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
+    transition: transform 0.3s ease;
+}
+
+.resume-preview:hover {
+    transform: scale(1.01);
+}
+
+.resume-preview iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Download Button ( jo resume ko download krne ke liye hai ) */
+
+.download-btn {
+    padding: 0.8rem 2rem;
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    color: var(--bg-primary);
+    border: none;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.download-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+}
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+    .resume-preview {
+        height: 350px;
+    }
+
+    .download-btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .resume-preview {
+        height: 280px;
+    }
+}
+
+/* CONTACT SECTION */
+.contact-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 2rem;
+max-width: 600px;
+margin: 0 auto;
+}
+.contact-form {
+width: 100%;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+.form-group {
+position: relative;
+}
+.form-input {
+width: 100%;
+padding: 1rem;
+background: var(--bg-secondary);
+border: 1px solid rgba(0, 217, 255, 0.3);
+border-radius: 5px;
+color: var(--text-primary);
+font-size: 1rem;
+transition: var(--transition);
+}
+.form-input:focus {
+outline: none;
+border-color: var(--neon-blue);
+box-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+}
+.form-label {
+position: absolute;
+top: 1rem;
+left: 1rem;
+color: var(--text-secondary);
+transition: var(--transition);
+pointer-events: none;
+}
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+top: -0.5rem;
+left: 0.5rem;
+font-size: 0.8rem;
+color: var(--neon-blue);
+background: var(--bg-primary);
+padding: 0 0.5rem;
+}
+textarea.form-input {
+min-height: 150px;
+resize: vertical;
+}
+.submit-btn {
+padding: 0.8rem 2rem;
+background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+color: var(--bg-primary);
+border: none;
+font-size: 1rem;
+border-radius: 50px;
+cursor: pointer;
+transition: var(--transition);
+font-weight: 600;
+align-self: flex-start;
+}
+.submit-btn:hover {
+transform: translateY(-3px);
+box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+}
+.submit-btn:disabled {
+opacity: 0.6;
+cursor: not-allowed;
+transform: none;
+}
+.contact-info {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 2rem;
+margin-top: 2rem;
+}
+.contact-item {
+display: flex;
+align-items: center;
+gap: 0.5rem;
+color: var(--text-secondary);
+transition: var(--transition);
+}
+.contact-item:hover {
+color: var(--neon-blue);
+transform: translateY(-3px);
+}
+.contact-icon {
+color: var(--neon-blue);
+font-size: 1.2rem;
+}
+
+/* STATUS MESSAGE STYLES - IMPROVED */
+#status {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background: rgba(17, 17, 17, 0.98);
+color: var(--neon-blue);
+padding: 20px 35px;
+border-radius: 15px;
+border: 2px solid var(--neon-blue);
+box-shadow: 0 0 30px rgba(0, 217, 255, 0.4);
+z-index: 9999;
+display: none;
+font-weight: 600;
+font-size: 1.1rem;
+backdrop-filter: blur(15px);
+animation: statusAppear 0.5s ease;
+text-align: center;
+min-width: 300px;
+}
+
+@keyframes statusAppear {
+from {
+   opacity: 0;
+   transform: translate(-50%, -50%) scale(0.7);
+}
+to {
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
+}
+}
+
+.status-success {
+    color: #00ff88 !important;
+    border-color: #00ff88 !important;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.4) !important;
+}
+
+.status-error {
+    color: #ff4444 !important;
+    border-color: #ff4444 !important;
+    box-shadow: 0 0 30px rgba(255, 68, 68, 0.4) !important;
+}
+
+/* Footer (a card me links ke liye use kiya hu jaise github, project link or information ) */
+footer {
+background: var(--bg-secondary);
+padding: 2rem 5%;
+text-align: center;
+border-top: 1px solid rgba(0, 217, 255, 0.1);
+}
+
+.social-icons {
+display: flex;
+justify-content: center;
+gap: 1.5rem;
+margin-bottom: 1.5rem;
+}
+
+.social-icon {
+color: var(--text-primary);
+font-size: 1.5rem;
+transition: var(--transition);
+}
+
+.social-icon:hover {   
+color: var(--neon-blue);
+transform: translateY(-5px);
+text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.footer-text {
+color: var(--text-secondary);
+font-size: 0.9rem;
+}
+
+/* Responsive Design for Mobile & Tablet (max-width: 768px) */
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                background: var(--bg-secondary);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 2rem 0;
+                transform: translateX(100%);
+                transition: var(--transition);
+                border-bottom: 1px solid rgba(0, 217, 255, 0.1);
+                backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero-name {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-category {
+                width: 100%;
+            }
+        }
+
+        /* 🔥 FORCE-DISPLAY CARDS (NO OTHER CHANGE) */
+        .projects-grid .project-card,
+        .skills-container .skill-category {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
