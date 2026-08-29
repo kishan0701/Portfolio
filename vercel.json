@@ -1,16 +1,3 @@
 {
-  "rewrites": [
-    {
-      "source": "/api/contact",
-      "destination": "/frontend/api/contact.js"
-    },
-    {
-      "source": "/",
-      "destination": "/frontend/index.html"
-    },
-    {
-      "source": "/:path*",
-      "destination": "/frontend/:path*"
-    }
-  ]
+  "outputDirectory": "frontend"
 }
