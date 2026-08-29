@@ -1,23 +1,16 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "frontend/api/contact.js",
-      "use": "@vercel/node"
+      "source": "/api/contact",
+      "destination": "/frontend/api/contact.js"
     },
     {
-      "src": "frontend/(.*)",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/contact",
-      "dest": "frontend/api/contact.js"
+      "source": "/",
+      "destination": "/frontend/index.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/$1"
+      "source": "/:path*",
+      "destination": "/frontend/:path*"
     }
   ]
 }
