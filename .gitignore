@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment variables & sensitive credentials
+.env
+*.env
+backend/.env
+
+# Local data & logs
+backend/data/
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
