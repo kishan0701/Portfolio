@@ -492,45 +492,81 @@ margin-top: 2rem;
 
 .skill-category {
 background: var(--bg-secondary);
-border-radius: 10px;
-padding: 2rem;
-width: 300px;
+border-radius: 14px;
+padding: 1.8rem;
+width: 310px;
 text-align: center;
 border: 1px solid rgba(0, 217, 255, 0.2);
 transition: var(--transition);
+position: relative;
+overflow: hidden;
+}
+
+.skill-category::before {
+content: '';
+position: absolute;
+top: 0; left: 0; right: 0;
+height: 3px;
+background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+border-radius: 14px 14px 0 0;
 }
 
 .skill-category:hover {
-transform: translateY(-5px);
-box-shadow: 0 0 15px rgba(0, 217, 255, 0.40);
+transform: translateY(-6px);
+box-shadow: 0 0 25px rgba(0, 217, 255, 0.30);
 border-color: var(--neon-blue);
 }
 
+.skill-cat-header {
+display: flex;
+align-items: center;
+gap: 0.6rem;
+justify-content: center;
+margin-bottom: 1.3rem;
+}
+
+.skill-cat-icon {
+font-size: 1.6rem;
+}
+
 .skill-title {
-font-size: 1.3rem;
-margin-bottom: 1.5rem;
+font-size: 1.1rem;
 color: var(--neon-blue);
+font-weight: 700;
+letter-spacing: 0.5px;
+margin: 0;
 }
 
 .skill-list {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
-gap: 0.8rem;
+gap: 0.7rem;
 }
 
 .skill-item {
-background: rgba(157, 0, 255, 0.1);
-color: var(--neon-purple);
-padding: 0.5rem 1rem;
+background: rgba(0, 217, 255, 0.07);
+color: var(--text-primary);
+border: 1px solid rgba(0, 217, 255, 0.2);
+padding: 0.4rem 0.9rem;
 border-radius: 50px;
-font-size: 0.9rem;
+font-size: 0.85rem;
 transition: var(--transition);
+display: inline-flex;
+align-items: center;
+gap: 0.4rem;
+}
+
+.skill-item i {
+color: var(--neon-blue);
+font-size: 0.85rem;
 }
 
 .skill-item:hover {
-background: rgba(157, 0, 255, 0.3);
-transform: scale(1.05);
+background: rgba(0, 217, 255, 0.18);
+border-color: var(--neon-blue);
+transform: translateY(-2px) scale(1.04);
+box-shadow: 0 0 8px rgba(0, 217, 255, 0.3);
 }
 
 /* RESUME SECTION  */
@@ -608,6 +644,48 @@ transform: scale(1.05);
     .resume-preview {
         height: 280px;
     }
+}
+
+/* Resume Mobile/Desktop toggle */
+
+.desktop-only { display: block; }
+.mobile-only  { display: none; }
+
+/* Resume Mobile Card */
+.resume-mobile-card {
+background: var(--bg-secondary);
+border: 1px solid rgba(0, 217, 255, 0.3);
+border-radius: 16px;
+padding: 2.5rem 2rem;
+text-align: center;
+max-width: 350px;
+width: 100%;
+box-shadow: 0 0 30px rgba(0, 217, 255, 0.15);
+}
+
+.resume-mobile-icon {
+font-size: 3.5rem;
+color: #ff4444;
+margin-bottom: 1rem;
+}
+
+.resume-mobile-title {
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--text-primary);
+margin-bottom: 0.4rem;
+}
+
+.resume-mobile-sub {
+color: var(--neon-blue);
+font-size: 0.9rem;
+margin-bottom: 1rem;
+}
+
+.resume-mobile-info {
+color: var(--text-secondary);
+font-size: 0.85rem;
+line-height: 1.5;
 }
 
 /* CONTACT SECTION */
@@ -831,6 +909,10 @@ font-size: 0.9rem;
             .skill-category {
                 width: 100%;
             }
+
+            /* Resume: hide iframe on mobile, show card */
+            .desktop-only { display: none !important; }
+            .mobile-only  { display: flex !important; flex-direction: column; align-items: center; }
         }
 
         /* 🔥 FORCE-DISPLAY CARDS (NO OTHER CHANGE) */

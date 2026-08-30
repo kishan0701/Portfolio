@@ -283,42 +283,73 @@
   <section id="skills">
     <h2 class="section-title">My Skills</h2>
     <div class="skills-container">
+
+      <!-- Web Development -->
       <div class="skill-category">
-        <h3 class="skill-title"> Photo & Video Editing</h3>
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">💻</span>
+          <h3 class="skill-title">Web Development</h3>
+        </div>
         <div class="skill-list">
-          <span class="skill-item">Davinci Resolve</span>
-          <span class="skill-item">Filmora</span>
-          <span class="skill-item">Capcut</span>
-          <span class="skill-item">Alight motion</span>
-          <span class="skill-item">PicsArt</span>
-          <span class="skill-item">Lightroom</span>
+          <span class="skill-item"><i class="fab fa-html5"></i> HTML5</span>
+          <span class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</span>
+          <span class="skill-item"><i class="fab fa-js-square"></i> JavaScript</span>
+          <span class="skill-item"><i class="fab fa-react"></i> React.js</span>
+          <span class="skill-item"><i class="fab fa-node-js"></i> Node.js</span>
+          <span class="skill-item"><i class="fas fa-server"></i> Express.js</span>
+          <span class="skill-item"><i class="fas fa-database"></i> MongoDB</span>
+          <span class="skill-item"><i class="fas fa-wind"></i> Tailwind CSS</span>
         </div>
       </div>
 
-      <!-- Graphics & Designs -->
+      <!-- Photo & Video Editing -->
       <div class="skill-category">
-        <h3 class="skill-title">Graphics & Designs </h3>
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">🎬</span>
+          <h3 class="skill-title">Photo & Video Editing</h3>
+        </div>
         <div class="skill-list">
-          <span class="skill-item">Photoshop</span>
-          <span class="skill-item">Coreldraw</span>
-          <span class="skill-item">Canva</span>
-          <span class="skill-item">Using Ai in designs</span>
-          <span class="skill-item">Microsoft Design</span>
+          <span class="skill-item"><i class="fas fa-film"></i> DaVinci Resolve</span>
+          <span class="skill-item"><i class="fas fa-video"></i> Filmora</span>
+          <span class="skill-item"><i class="fas fa-cut"></i> CapCut</span>
+          <span class="skill-item"><i class="fas fa-mobile-alt"></i> Alight Motion</span>
+          <span class="skill-item"><i class="fas fa-image"></i> Lightroom</span>
+          <span class="skill-item"><i class="fas fa-paint-brush"></i> PicsArt</span>
         </div>
       </div>
 
-      <!-- Other -->
+      <!-- Graphics & Design -->
       <div class="skill-category">
-        <h3 class="skill-title">Others</h3>
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">🎨</span>
+          <h3 class="skill-title">Graphics & Design</h3>
+        </div>
         <div class="skill-list">
-          <span class="skill-item">Learnig Full Stack development</span>
-          <span class="skill-item">Python</span>
-          <span class="skill-item">Java</span>
-          <span class="skill-item">Hosting websites</span>
-          <span class="skill-item">SQL/PL SQL</span>
-          <span class="skill-item"> UI/UX Design</span>
+          <span class="skill-item"><i class="fab fa-adobe"></i> Photoshop</span>
+          <span class="skill-item"><i class="fas fa-vector-square"></i> CorelDRAW</span>
+          <span class="skill-item"><i class="fab fa-figma"></i> Figma / UI·UX</span>
+          <span class="skill-item"><i class="fas fa-palette"></i> Canva</span>
+          <span class="skill-item"><i class="fas fa-robot"></i> AI Design Tools</span>
+          <span class="skill-item"><i class="fas fa-pen-ruler"></i> Microsoft Design</span>
         </div>
       </div>
+
+      <!-- Other Technical -->
+      <div class="skill-category">
+        <div class="skill-cat-header">
+          <span class="skill-cat-icon">⚙️</span>
+          <h3 class="skill-title">Other Technical</h3>
+        </div>
+        <div class="skill-list">
+          <span class="skill-item"><i class="fab fa-python"></i> Python</span>
+          <span class="skill-item"><i class="fab fa-java"></i> Java</span>
+          <span class="skill-item"><i class="fas fa-database"></i> SQL / PL-SQL</span>
+          <span class="skill-item"><i class="fab fa-github"></i> Git & GitHub</span>
+          <span class="skill-item"><i class="fas fa-cloud-upload-alt"></i> Web Hosting</span>
+          <span class="skill-item"><i class="fas fa-terminal"></i> REST APIs</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -326,8 +357,16 @@
   <section id="resume">
     <h2 class="section-title">My Resume</h2>
     <div class="resume-container">
-      <div class="resume-preview">
-        <iframe src="KishanYadavResume.pdf" width="100%" height="600px" frameborder="0"></iframe>
+      <!-- Desktop: iframe PDF preview -->
+      <div class="resume-preview desktop-only">
+        <iframe src="KishanYadavResume.pdf" width="100%" height="100%" frameborder="0"></iframe>
+      </div>
+      <!-- Mobile: Resume card instead of iframe -->
+      <div class="resume-mobile-card mobile-only">
+        <div class="resume-mobile-icon"><i class="fas fa-file-pdf"></i></div>
+        <h3 class="resume-mobile-title">Kishan Yadav</h3>
+        <p class="resume-mobile-sub">Computer Science Student & Full Stack Developer</p>
+        <p class="resume-mobile-info">📄 Resume ready to download — tap the button below</p>
       </div>
       <a href="KishanYadavResume.pdf" class="download-btn" id="download-resume" download>
         <i class="fas fa-download"></i> Download PDF
