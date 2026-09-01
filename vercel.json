@@ -1,3 +1,9 @@
 {
-  "outputDirectory": "frontend"
+  "outputDirectory": "frontend",
+  "functions": {
+    "api/contact.js": {
+      "memory": 512,
+      "maxDuration": 10
+    }
+  }
 }
